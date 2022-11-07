@@ -179,7 +179,7 @@ def final_hand():
         elif updated_user_score > updated_comp_score:
             print(f"You win\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}")
             another_card = False
-        elif updated_user_score < update_comp_score:
+        elif updated_user_score < updated_comp_score:
             print(f"You lose\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}.  ")
             another_card = False
         go_again = input("Do you want to restart. Type 'yes' or 'no'")
@@ -266,10 +266,12 @@ while start:
         start = False
             
     another_card_1 = input("Type 'y' to get another card or 'n' to pass\n")
+    another_card = bool
     if another_card_1 == "y":
         another_card = True
     elif another_card_1 == "n":
         final_hand()
+        
     while another_card:
         users_score = info["users_info"]["score"]
         users_t_card = random.choice(cards)
