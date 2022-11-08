@@ -2,11 +2,10 @@ import random
 from art import logo
 cards = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-
-
 print(logo)
 
 computer_choice = ["yes", "no"]
+
 
 def user_f_ace(fc):
     if fc == "Ace":
@@ -19,6 +18,8 @@ def user_f_ace(fc):
             return fc
     else:
         return fc
+    
+    
 def user_s_ace(sc):
     if sc == "Ace":
         which_ace = input("You picked ace for your second card, do you want '11' or '1'?")
@@ -30,6 +31,8 @@ def user_s_ace(sc):
             return sc
     else:
         return sc
+    
+    
 def user_t_ace(tc):
     if tc == "Ace":
         which_ace = input("You picked ace, do you want '11' or '1'?")
@@ -41,6 +44,8 @@ def user_t_ace(tc):
             return tc
     else:
         return tc
+    
+    
 def comp_f_ace(fc):
     ace = ["11", "1"]
     if fc == "Ace":
@@ -53,6 +58,8 @@ def comp_f_ace(fc):
             return fc
     else:
         return fc
+    
+    
 def comp_s_ace(sc):
     ace = ["11", "1"]
     if sc == "Ace":
@@ -65,6 +72,8 @@ def comp_s_ace(sc):
           return sc
     else:
         return sc
+    
+    
 def comp_t_ace(tc):
     ace = ["11", "1"]
     if tc == "Ace":
@@ -77,23 +86,29 @@ def comp_t_ace(tc):
             return tc
     else:
         return tc
+    
+    
 def computers_choice(choice):
     random.choice(choice)
 
+    
 def update_users_cards(card_info):
     
     updated_card = info["users_info"]["cards"].append(card_info)
     return updated_card   
 
+
 def update_comp_cards(card_info):
     info["computer_info"]["cards"].append(card_info)
     return info["computer_info"]["cards"].append(card_info)
+
 
 def update_users_score(score, card):
     user_t_ace(card)
     users_score = add_users_score(score, card)  
     info["users_info"]["score"] = users_score
     updated_user_score = info["users_info"]["score"]
+    
     
 def update_comp_score(score, card):
     computers_score = info["computers_info"]["score"]
@@ -104,8 +119,11 @@ def update_comp_score(score, card):
 def add_users_score(n1, n2):
     return n1 + n2
 
+
 def add_computers_score(n1, n2):
     return n1 + n2
+
+
 def final_hand():
         updated_user_score = info["users_info"]["score"]
         updated_comp_score = info["computers_info"]["score"]
@@ -121,28 +139,16 @@ def final_hand():
         elif updated_user_score < updated_comp_score:
             print(f"You lose\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}.  ")
             another_card = False
-        go_again = input("Do you want to restart. Type 'yes' or 'no'")
-        if go_again == "yes":
-            start = True
-        elif go_again == "no":
-            another_card = False
-            start = False
-            print("Thank you for playing")    
+            
 
 def comps_go_again():
     if computers_choice(computer_choice) == "yes":
-        com_t_card = random.choice(card)
+        com_t_card = random.choice(cards)
         update_comp_score(computers_score, comp_t_ace(com_t_card))
         update_comp_cards(com_t_card)
     elif computers_choice(computer_choice) == "no":
         if another_card == "n":
             final_hand()
-           
-    
-
-
-
-
 
 
 start1 = input("Do you want to play the game of blackjack?. Type 'yes' or 'no'\n").lower()
@@ -187,7 +193,6 @@ if start1 == "no":
     start = False
 
 
-
 while start:
     print(f"Your card: {users_card}, Your score: {users_score}")
     
@@ -210,6 +215,14 @@ while start:
         another_card = True
     elif another_card_1 == "n":
         final_hand()
+        go_again = input("Do you want to restart. Type 'yes' or 'no'").lower()
+        if go_again == "yes":
+            start = True
+        elif go_again == "no":
+            another_card = False
+            start = False
+            print("Thank you for playing")    
+        
         
     while another_card:
         users_score = info["users_info"]["score"]
@@ -222,7 +235,7 @@ while start:
         updated_comp_score = info["computers_info"]["score"]
         another_card = False
     
-        #computer's decision to pick another and what would happen after that begins from here
+    #computer's decision to pick another card and what would happen after that begins from here
     comps_go_again()
 
 
