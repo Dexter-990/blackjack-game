@@ -127,12 +127,11 @@ def add_computers_score(n1, n2):
 def final_hand():
         updated_user_score = info["users_info"]["score"]
         updated_comp_score = info["computers_info"]["score"]
-        if updated_user_score == 21:
+        if updated_user_score == 21 or updated_comp_score > 21:
             print(f"You won before the game got interesting\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}")
             another_card = False
-        elif updated_comp_score == 21:
-            print(f"You lose\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}.  ")
-            
+        elif updated_comp_score == 21 or updated_user_score > 21:
+            print(f"You lose\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}.  ")   
         elif updated_user_score > updated_comp_score:
             print(f"You win\n Your cards are {users_cards}, your score is {users_score}\n Computers score is {computers_score}\nComputer's cards are {computers_cards}")
             another_card = False
